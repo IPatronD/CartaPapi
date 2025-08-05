@@ -1,0 +1,588 @@
+/* Estilos base */
+body {
+    background-color: #f8f1e9;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-image: url('https://images.unsplash.com/photo-1518510955383-09bb404e7b9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.contenedor {
+    max-width: 600px;
+    width: 100%;
+    perspective: 1000px;
+}
+
+.sobre {
+    background-color: #fff9f0;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, #e8c4c4, #d2a679, #e8c4c4);
+}
+
+.carta {
+    position: relative;
+    z-index: 2;
+}
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.encabezado h1 {
+    font-family: 'Playfair Display', serif;
+    color: #8b5a2b;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.flores {
+    height: 30px;
+    background-image: url('https://images.unsplash.com/photo-1516589091380-5d5e3ad05c3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 0.7;
+    margin: 20px 0;
+}
+
+.contenido {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.intro {
+    margin-bottom: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.destacado {
+    font-weight: bold;
+    text-align: center;
+    color: #8b5a2b;
+    margin: 25px 0;
+    font-size: 18px;
+}
+
+.detalles {
+    background-color: rgba(234, 224, 213, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 30px 0;
+    border-left: 3px solid #d2a679;
+}
+
+.detalles p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.detalles span {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.agradecimiento {
+    text-align: center;
+    margin: 25px 0;
+    font-weight: 300;
+}
+
+.firma {
+    text-align: right;
+    margin-top: 40px;
+    font-style: italic;
+}
+
+.nombre-firma {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #8b5a2b;
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.nombre-firma::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #8b5a2b;
+}
+
+.nota {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Estilos para el carrusel mejorado */
+.carrusel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 25px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carrusel-inner {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 500px;
+}
+
+.carrusel-item {
+    min-width: 100%;
+    position: relative;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.carrusel-item.active {
+    opacity: 1;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 5px solid white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.carrusel-item img:hover {
+    transform: scale(1.02);
+}
+
+.carrusel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(139, 90, 43, 0.7);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.carrusel:hover .carrusel-control {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carrusel-control:hover {
+    background-color: rgba(139, 90, 43, 0.9);
+}
+
+.carrusel-control.prev {
+    left: 20px;
+}
+
+.carrusel-control.next {
+    right: 20px;
+}
+
+.carrusel-indicadores {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carrusel-indicador {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #8b5a2b;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carrusel-indicador.active {
+    background-color: #8b5a2b;
+    transform: scale(1.2);
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    animation: fadeIn 0.3s;
+}
+
+.lightbox-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    animation: zoomIn 0.3s;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-lightbox:hover {
+    color: #d2a679;
+}
+
+.lightbox-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.lightbox-control:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-prev {
+    left: 30px;
+}
+
+.lightbox-next {
+    right: 30px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .encabezado h1 {
+        font-size: 24px;
+    }
+
+    .contenido {
+        font-size: 15px;
+    }
+
+    .carrusel-inner {
+        height: 350px;
+    }
+
+    .carrusel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .lightbox-control {
+        font-size: 30px;
+    }
+
+    .close-lightbox {
+        font-size: 30px;
+        top: 15px;
+        right: 25px;
+    }
+}
+
+/* Estilos Responsivos - Mejorados */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        background-attachment: scroll;
+    }
+
+    .contenedor {
+        max-width: 95%;
+    }
+
+    .sobre {
+        padding: 20px;
+    }
+
+    .encabezado h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .flores {
+        height: 20px;
+        margin: 15px 0;
+    }
+
+    .contenido {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .destacado {
+        font-size: 16px;
+        margin: 20px 0;
+    }
+
+    .detalles {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .detalles span {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .nombre-firma {
+        font-size: 20px;
+    }
+
+    /* Carrusel responsivo */
+    .carrusel {
+        margin: 20px auto;
+        border-radius: 6px;
+    }
+
+    .carrusel-inner {
+        height: 380px;
+    }
+
+    .carrusel-item img {
+        border-width: 3px;
+    }
+
+    .carrusel-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .carrusel-control.prev {
+        left: 10px;
+    }
+
+    .carrusel-control.next {
+        right: 10px;
+    }
+
+    .carrusel-indicadores {
+        bottom: 15px;
+    }
+
+    .carrusel-indicador {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+
+    .sobre {
+        padding: 15px;
+    }
+
+    .encabezado h1 {
+        font-size: 22px;
+    }
+
+    .contenido {
+        font-size: 14px;
+    }
+
+    .detalles {
+        padding: 12px;
+    }
+
+    .detalles span {
+        font-size: 16px;
+    }
+
+    .nombre-firma {
+        font-size: 18px;
+    }
+
+    /* Carrusel para móviles pequeños */
+    .carrusel-inner {
+        height: 350px;
+    }
+
+    .carrusel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+        opacity: 1;
+        visibility: visible;
+        background-color: rgba(139, 90, 43, 0.5);
+    }
+
+    .carrusel-control:hover {
+        background-color: rgba(139, 90, 43, 0.7);
+    }
+
+    .carrusel-indicadores {
+        bottom: 10px;
+    }
+
+    /* Lightbox para móviles */
+    .lightbox-control {
+        font-size: 25px;
+        padding: 10px;
+    }
+
+    .lightbox-prev {
+        left: 15px;
+    }
+
+    .lightbox-next {
+        right: 15px;
+    }
+
+    .close-lightbox {
+        font-size: 30px;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .carrusel-inner {
+        height: 280px;
+    }
+
+    .detalles p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .detalles span {
+        margin-right: 0;
+    }
+
+    .firma {
+        margin-top: 30px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+
+    .contenedor {
+        max-width: 90%;
+    }
+
+    .sobre {
+        padding: 15px;
+    }
+
+    .carrusel-inner {
+        height: 00px;
+    }
+
+    .contenido {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .detalles {
+        padding: 10px;
+        margin: 15px 0;
+    }
+
+    .nombre-firma {
+        font-size: 16px;
+    }
+}
